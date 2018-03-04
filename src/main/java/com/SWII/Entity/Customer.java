@@ -1,9 +1,8 @@
 package com.SWII.Entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 
 @Entity
 public class Customer {
@@ -53,6 +52,12 @@ public class Customer {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [userName=" + userName + ", fristName=" + fristName + ", secoundName=" + secoundName
+				+ ", password=" + password + "]";
 	}
 
 }

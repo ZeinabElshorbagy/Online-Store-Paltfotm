@@ -43,6 +43,11 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
         <!-- Use MySQL Connector-J -->
 
         <dependency>
@@ -55,7 +60,10 @@
     		<artifactId>spring-webmvc</artifactId> 
    			 <version>${spring.version}</version> 
 		</dependency> 
-		
+		<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
 	</dependencies>
 	<build>
 		<plugins>
