@@ -5,7 +5,7 @@
 <title>Register</title>
 </head>
 <body>
-	<form action="#" method="post" th:action="@{customer/Register}" th:object="${customer}" >
+	<form action="#" method="post" th:action="@{customer/signIn}" th:object="${customer}" >
 				<input type="text" name ="username" th:field="*{userName}" />
 				<input type="text" name ="fname" th:field="*{fristName}" />
 				<input type="text" name ="wname" th:field="*{secoundName}"/>

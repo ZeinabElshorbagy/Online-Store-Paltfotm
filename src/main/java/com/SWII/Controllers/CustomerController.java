@@ -38,4 +38,26 @@ public class CustomerController {
 	}
     
     
+    /******************************
+    
+    @RequestMapping(value="/signIn", method=RequestMethod.GET)
+	public String signInForm(Model model) {
+		model.addAttribute("customer",new Customer());
+		return "CustomerRegister";
+		
+	}
+	
+    @RequestMapping(value="/signIn",  method=RequestMethod.POST)
+	public  String signIn(Model model,@ModelAttribute  Customer customer) {
+		model.addAttribute("customer",new Customer());
+		if(!customerRepo.existsById(customer.getUserName())) {
+			customerRepo.save(customer);
+			return "";
+		}else {
+			return "User Name Exists";
+		}
+    	
+	}*/
+    
+    
 }
