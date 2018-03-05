@@ -22,14 +22,12 @@ public class CustomerController {
 	public String registerForm(Model model) {
 		model.addAttribute("customer",new Customer());
 		return "CustomerRegister";
-		
 	}
 	
     @RequestMapping(value="/Register",  method=RequestMethod.POST)
 	public  String register(Model model,@ModelAttribute  Customer customer) {
 		model.addAttribute("customer",new Customer());
 		if(!customerRepo.existsById(customer.getUserName())) {
-			customerRepo.save(customer);
 			return "";
 		}else {
 			return "User Name Exists";

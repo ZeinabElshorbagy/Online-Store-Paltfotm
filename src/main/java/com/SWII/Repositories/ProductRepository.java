@@ -2,9 +2,9 @@ package com.SWII.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.SWII.Entity.OnlineProductEntity;
 
-public class ProductRepository extends CrudRepository<Product,Integer>{
-	
+public interface ProductRepository extends CrudRepository<OnlineProductEntity,Integer>{
 	
 	
 }
