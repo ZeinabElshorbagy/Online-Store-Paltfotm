@@ -22,7 +22,6 @@ public class CustomerController {
 	public String registerForm(Model model) {
 		model.addAttribute("customer",new Customer());
 		return "CustomerRegister";
-		
 	}
 	
     @RequestMapping(value="/Register",  method=RequestMethod.POST)
@@ -58,6 +57,4 @@ public class CustomerController {
 		}
     	
 	}*/
-    
-    
 }
