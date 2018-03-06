@@ -7,10 +7,11 @@
 <body>
 	<form action="#" method="post" th:action="@{../product/addproduct}" th:object="${product}" >
 				<input type="text" name ="name" th:field="*{name}" />
-				<input type="text" name ="price" th:field="*{price}" />
+				<input type="text" name ="price" th:field="*{lowPrice}" />
+				<input type="text" name ="type" th:field="*{highPrice}"/>
 				<input type="text" name ="brand" th:field="*{brand}" />
 				<input type="text" name ="category" th:field="*{category}"/>
-				<input type="text" name ="type" th:field="*{type}"/>
+				<input type="text" name ="type" th:field="*{productId}"/>
 				<input type="submit">
 	</form>
 </body>

@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SWII.Entity.AdminEntity;
+import com.SWII.Entity.Product;
 import com.SWII.Repositories.AdminRepository;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("admin")
 public class AdminController {
 	@Autowired
 	AdminRepository adminRepository;
@@ -40,7 +41,7 @@ public class AdminController {
 	}*/
 	@RequestMapping(value="/addproduct",method=RequestMethod.GET)
 	public String addProductForm(Model model) {
-		model.addAttribute("admin", new AdminEntity());
+		model.addAttribute("product",  new  Product());
 		return "AddProduct";
 	}
 	
