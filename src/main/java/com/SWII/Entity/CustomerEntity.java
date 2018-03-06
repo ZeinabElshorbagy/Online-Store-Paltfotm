@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Customer {
+public class CustomerEntity {
 	@Id
 	private String userName;
 	private String fristName;
@@ -15,7 +15,7 @@ public class Customer {
 	
 	
 	
-	public Customer(String userName, String fristName, String secoundName, String password) {
+	public CustomerEntity(String userName, String fristName, String secoundName, String password) {
 		super();
 		this.userName = userName;
 		this.fristName = fristName;
@@ -23,7 +23,7 @@ public class Customer {
 		this.password = password;
 	}
 	
-	public Customer() {
+	public CustomerEntity() {
 		this.userName ="";
 		this.fristName="";
 		this.secoundName="";

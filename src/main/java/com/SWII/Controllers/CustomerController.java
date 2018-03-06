@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.SWII.Entity.Customer;
+import com.SWII.Entity.CustomerEntity;
 import com.SWII.Repositories.CustomerRepository;
 
 
@@ -20,13 +20,13 @@ public class CustomerController {
 	
 	@RequestMapping(value="/Register", method=RequestMethod.GET)
 	public String registerForm(Model model) {
-		model.addAttribute("customer",new Customer());
+		model.addAttribute("customer",new CustomerEntity());
 		return "CustomerRegister";
 	}
 	
     @RequestMapping(value="/Register",  method=RequestMethod.POST)
-	public  String register(Model model,@ModelAttribute  Customer customer) {
-		model.addAttribute("customer",new Customer());
+	public  String register(Model model,@ModelAttribute  CustomerEntity customer) {
+		model.addAttribute("customer",new CustomerEntity());
 		if(!customerRepo.existsById(customer.getUserName())) {
 			customerRepo.save(customer);
 			return "";
@@ -37,24 +37,24 @@ public class CustomerController {
 	}
     
     
-    /******************************
+    /******************************/
     
-    @RequestMapping(value="/signIn", method=RequestMethod.GET)
+    @RequestMapping(value="/signin", method=RequestMethod.GET)
 	public String signInForm(Model model) {
-		model.addAttribute("customer",new Customer());
-		return "CustomerRegister";
+		model.addAttribute("customer",new CustomerEntity());
+		return "CustomerSignIn";
 		
 	}
 	
-    @RequestMapping(value="/signIn",  method=RequestMethod.POST)
-	public  String signIn(Model model,@ModelAttribute  Customer customer) {
-		model.addAttribute("customer",new Customer());
-		if(!customerRepo.existsById(customer.getUserName())) {
-			customerRepo.save(customer);
+    @RequestMapping(value="/signin",  method=RequestMethod.POST)
+	public  String signIn(Model model,@ModelAttribute  CustomerEntity customer) {
+		model.addAttribute("customer",new CustomerEntity());
+		CustomerEntity customerFromDb=customerRepo.findById(customer.getUserName()).get();
+		if(customerFromDb.getPassword().equals(customer.getPassword())) {
 			return "";
 		}else {
 			return "User Name Exists";
 		}
     	
-	}*/
+	}
 }

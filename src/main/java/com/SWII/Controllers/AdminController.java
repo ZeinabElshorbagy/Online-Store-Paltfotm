@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SWII.Entity.AdminEntity;
-import com.SWII.Entity.Product;
+import com.SWII.Entity.OfflineProductEntity;
+import com.SWII.Entity.OnlineProductEntity;
 import com.SWII.Repositories.AdminRepository;
 
 @Controller
@@ -40,8 +41,11 @@ public class AdminController {
 		
 	}*/
 	@RequestMapping(value="/addproduct",method=RequestMethod.GET)
-	public String addProductForm(Model model) {
-		model.addAttribute("product",  new  Product());
+	public String addProductForm(Model model,OnlineProductEntity onlineProduct
+								,OfflineProductEntity offlineProduct) {
+		model.addAttribute("onlineproduct",onlineProduct);
+		model.addAttribute("offlineproduct",offlineProduct);
+
 		return "AddProduct";
 	}
 	

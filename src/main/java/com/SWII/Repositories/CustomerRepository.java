@@ -2,7 +2,7 @@ package com.SWII.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.SWII.Entity.Customer;
+import com.SWII.Entity.CustomerEntity;
 
-public interface CustomerRepository extends CrudRepository<Customer,String> {
+public interface CustomerRepository extends CrudRepository<CustomerEntity,String> {
 }

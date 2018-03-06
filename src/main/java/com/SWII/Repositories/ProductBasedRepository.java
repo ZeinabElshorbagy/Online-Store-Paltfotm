@@ -7,7 +7,7 @@ import com.SWII.Entity.Product;
 
 
 @NoRepositoryBean
-public interface ProductBasedRepository<product extends Product> extends CrudRepository<product,Integer>{
+public interface ProductBasedRepository<product extends Product> extends CrudRepository<product,String>{
 	
 	//public product findByEmail(String email);	
 }

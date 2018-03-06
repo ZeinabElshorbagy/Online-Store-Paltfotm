@@ -3,22 +3,23 @@ package com.SWII.Entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 
 @Entity
-@Inheritance
-public  class Product {
-		@Id
-		Integer productId; 
-		String name;
-		double lowPrice;
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Product {
+		@Id 
+		String productId; 
+		String name; 
+		double lowPrice; 
 		double highPrice;
 		String brand;
 		String category;
 		
 		
 		
-		public Product(Integer productId, String name, double lowPrice, double highPrice, String brand,
+		public Product(String productId, String name, double lowPrice, double highPrice, String brand,
 				String category) {
 			super();
 			this.productId = productId;
@@ -31,6 +32,7 @@ public  class Product {
 		
 		public Product() {
 			super();
+			this.productId="";
 			this.name ="";
 			this.lowPrice = 0.0;
 			this.highPrice = 0.0;
@@ -38,10 +40,10 @@ public  class Product {
 			this.category = "";
 		}
 		
-		public Integer getProductId() {
+		public String getProductId() {
 			return productId;
 		}
-		public void setProductId(Integer productId) {
+		public void setProductId(String productId) {
 			this.productId = productId;
 		}
 		public String getName() {

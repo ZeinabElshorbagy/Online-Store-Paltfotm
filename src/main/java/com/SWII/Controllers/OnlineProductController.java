@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SWII.Entity.OnlineProductEntity;
-import com.SWII.Entity.Product;
-import com.SWII.Repositories.ProductRepo;
+import com.SWII.Repositories.OnlineProductRepo;
 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/onlineProduct")
+public class OnlineProductController {
+	
 	@Autowired
-	ProductRepo<Product> productRepo;
+	OnlineProductRepo productRepo; 
+	
 	
 	@RequestMapping(value="/addproduct",method=RequestMethod.POST)
 	public boolean addProduct(Model model ,@ModelAttribute OnlineProductEntity product) {
-		model.addAttribute("product",new Product());
+		model.addAttribute("product", new OnlineProductEntity());
 		if(productRepo.existsById(product.getProductId())) {
+			productRepo.save(product);
 			return false;
 		}else {
 			productRepo.save(product);
