@@ -23,7 +23,7 @@ public class OnlineProductController {
 	public boolean addProduct(Model model ,@ModelAttribute OnlineProductEntity product) {
 		model.addAttribute("product", new OnlineProductEntity());
 		if(productRepo.existsById(product.getProductId())) {
-			productRepo.save(product);
+			//productRepo.save(product);
 			return false;
 		}else {
 			productRepo.save(product);
