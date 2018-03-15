@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 package com.SWII.Entity;
 
 import java.io.Serializable;
