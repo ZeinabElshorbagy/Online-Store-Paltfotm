@@ -6,5 +6,4 @@ import com.SWII.Entity.Store;
 
 public interface StoreBasedRepository <store extends Store> extends CrudRepository<store,String> {
 
-	
 }

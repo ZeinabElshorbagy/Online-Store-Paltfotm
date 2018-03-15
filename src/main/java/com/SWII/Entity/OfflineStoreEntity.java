@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 public class OfflineStoreEntity extends Store {
 
 	
-	
+
+	public OfflineStoreEntity(String storeId) {
+		super(storeId);
+	}
 	
 	public OfflineStoreEntity() {
 		super();
 	}
-	
 
 }

@@ -1,7 +1,13 @@
 package com.SWII.Entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class StoreOwnerEntity {
@@ -74,6 +80,18 @@ public class StoreOwnerEntity {
 		this.password = password;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+	}
+
+	
+	 @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "storeOwner")
+	 private Set<Store> stores = new HashSet<>();
+
+	public Set<Store> getStores() {
+		return stores;
+	}
+
+	public void setStores(Set<Store> stores) {
+		this.stores = stores;
 	}
 
 }

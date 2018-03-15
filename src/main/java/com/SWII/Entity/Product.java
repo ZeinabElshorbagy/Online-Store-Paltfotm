@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,7 @@ public abstract class Product {
     @OneToMany(mappedBy = "stores", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<StoreProductsEntity> stores;
 
+
 	String name;
 	double lowPrice;
 	double highPrice;
@@ -26,13 +28,11 @@ public abstract class Product {
 	
 	
 	
-	
-	
-	public Product(String productId, Set<StoreProductsEntity> stores, String name, double lowPrice, double highPrice,
-			String brand, String category) {
+
+
+	public Product(String productId, String name, double lowPrice, double highPrice, String brand, String category) {
 		super();
 		this.productId = productId;
-		this.stores = stores;
 		this.name = name;
 		this.lowPrice = lowPrice;
 		this.highPrice = highPrice;
@@ -40,10 +40,17 @@ public abstract class Product {
 		this.category = category;
 	}
 	
-	
+
+
+
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.productId = "";
+		this.name = "";
+		this.lowPrice = 0.0;
+		this.highPrice = 0.0;
+		this.brand = "";
+		this.category = "";
 	}
 
 
@@ -89,7 +96,5 @@ public abstract class Product {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
-	
 
 }

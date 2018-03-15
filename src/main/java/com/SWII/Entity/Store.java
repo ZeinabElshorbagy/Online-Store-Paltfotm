@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -40,11 +41,24 @@ public abstract class Store {
 	
 	
 
-	public Store() {
+	private Boolean status;
+	private String name;
+
+
+
+
+	public Store(String storeId, Boolean status, Set<StoreProductsEntity> products, String name, Integer numberOfView,
+			StoreOwnerEntity storeOwner) {
 		super();
+		this.storeId = storeId;
+		this.status = status;
+		this.products = products;
+		this.name = name;
+		this.numberOfView = numberOfView;
+		this.storeOwner = storeOwner;
 	}
 
-
+	
 
 	public String getStoreId() {
 		return storeId;
@@ -74,5 +88,42 @@ public abstract class Store {
 	
 	
 	
+	public Store(String storeId) {
+		super();
+		this.storeId = storeId;
+	}
+	public Store() {
+		super();
+		this.storeId = "";
+	}
+	
+	   @ManyToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name = "userName", nullable = false)
+	   private StoreOwnerEntity storeOwner;
+
+	public StoreOwnerEntity getStoreOwner() {
+		return storeOwner;
+	}
+
+	public void setStoreOwner(StoreOwnerEntity storeOwner) {
+		this.storeOwner = storeOwner;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	   
 
 }

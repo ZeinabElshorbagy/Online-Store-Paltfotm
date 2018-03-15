@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.SWII.Entity.OfflineStoreEntity;
 import com.SWII.Entity.OnlineStoreEntity;
 import com.SWII.Entity.Store;
 import com.SWII.Entity.StoreOwnerEntity;
@@ -46,6 +47,15 @@ public class StoreOwnerController {
 		return "StoreOwnerSignIn";
 	}
 
+
+	/********************************************/
+	@RequestMapping(value = "/addStore", method = RequestMethod.GET)
+	public String AddStore(Model model,OnlineStoreEntity onlineStore,OfflineStoreEntity offlineStore) {
+		model.addAttribute("onlineStore",onlineStore);
+		model.addAttribute("offlineStore",offlineStore);
+		return "AddStore";
+	}
+	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String SignIn(Model model, @ModelAttribute StoreOwnerEntity storeOwner, HttpSession session) {
 		model.addAttribute("storeOwner", new StoreOwnerEntity());
@@ -67,6 +77,15 @@ public class StoreOwnerController {
 		
 	}
 	/******************************************************************/
+//	/******************************************************************
+//	/*@RequestMapping(method = RequestMethod.GET)
+//	public String displayStores(Model model,HttpSession session) {
+//		Set<Store> stores; /** = 7aga ma btrg3 stores eli b id el store owner**/
+//		model.addAttribute("stores", new  );
+//		return "";
+//		
+//	}\
+//	******************************************************************/
 
 //	@RequestMapping(method = RequestMethod.GET)
 //	public String ShowStatistics(Model model
