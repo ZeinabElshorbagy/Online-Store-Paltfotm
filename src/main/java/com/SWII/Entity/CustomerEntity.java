@@ -8,6 +8,7 @@ import javax.persistence.Id;
 public class CustomerEntity {
 	@Id
 	private String userName;
+	private String email;
 	private String fristName;
 	private String secoundName;
 	private String password;
@@ -15,19 +16,29 @@ public class CustomerEntity {
 	
 	
 	
-	public CustomerEntity(String userName, String fristName, String secoundName, String password) {
+
+	public CustomerEntity(String userName, String email, String fristName, String secoundName, String password) {
 		super();
 		this.userName = userName;
+		this.email = email;
 		this.fristName = fristName;
 		this.secoundName = secoundName;
 		this.password = password;
 	}
-	
 	public CustomerEntity() {
-		this.userName ="";
-		this.fristName="";
-		this.secoundName="";
-		this.password="";
+		super();
+		this.userName = "";
+		this.email = "";
+		this.fristName = "";
+		this.secoundName = "";
+		this.password = "";
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getUserName() {
 		return userName;

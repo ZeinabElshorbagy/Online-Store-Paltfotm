@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.SWII.Entity.AdminEntity;
 import com.SWII.Entity.OfflineProductEntity;
 import com.SWII.Entity.OnlineProductEntity;
-import com.SWII.Repositories.AdminRepository;
+import com.SWII.Services.AdminServices;
 
 @Controller
 @RequestMapping("admin")
 public class AdminController {
+
 	@Autowired
-	AdminRepository adminRepository;
+	AdminServices adminService;
 	
 	@RequestMapping(value="/signin",method=RequestMethod.GET)
 	public String Show(Model model) {
@@ -28,9 +29,7 @@ public class AdminController {
 	@RequestMapping(value="/signin",method=RequestMethod.POST)
 	public String SignIn(Model model ,@ModelAttribute AdminEntity admin) {
 		model.addAttribute("admin", new AdminEntity());
-		AdminEntity adminFromDb=adminRepository.findById(admin.getEmail()).get();
-		System.out.println(admin.getPassword()+"----"+adminFromDb.getPassword());
-		if(adminFromDb.getPassword().equals(admin.getPassword())){
+		if(adminService.loadUserByUserName(admin.getEmail(), admin.getPassword())!=null){
 			return "signedin";
 		}
 		return "ww";

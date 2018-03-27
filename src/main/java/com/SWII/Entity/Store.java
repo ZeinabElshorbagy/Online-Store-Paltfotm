@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Store {
 
-	@Id
+	@Id 
 	private String storeId;
 
 	
@@ -95,6 +95,7 @@ public abstract class Store {
 	public Store() {
 		super();
 		this.storeId = "";
+		status=false;
 	}
 	
 	   @ManyToOne(fetch = FetchType.LAZY)

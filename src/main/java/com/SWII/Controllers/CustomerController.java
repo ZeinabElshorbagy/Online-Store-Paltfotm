@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SWII.Entity.CustomerEntity;
-import com.SWII.Repositories.CustomerRepository;
+import com.SWII.Services.CutomerServices;
 
 
 @Controller
@@ -16,7 +16,7 @@ import com.SWII.Repositories.CustomerRepository;
 public class CustomerController {
 	
 	@Autowired 
-	CustomerRepository customerRepo;
+	CutomerServices customerService;
 	
 	@RequestMapping(value="/Register", method=RequestMethod.GET)
 	public String registerForm(Model model) {
@@ -27,11 +27,10 @@ public class CustomerController {
     @RequestMapping(value="/Register",  method=RequestMethod.POST)
 	public  String register(Model model,@ModelAttribute  CustomerEntity customer) {
 		model.addAttribute("customer",new CustomerEntity());
-		if(!customerRepo.existsById(customer.getUserName())) {
-			customerRepo.save(customer);
-			return "";
+		if(customerService.saveCustomer(customer)) {
+			return "Done";
 		}else {
-			return "User Name Exists";
+			return "UserNameExists";
 		}
     	
 	}
@@ -49,11 +48,11 @@ public class CustomerController {
     @RequestMapping(value="/signin",  method=RequestMethod.POST)
 	public  String signIn(Model model,@ModelAttribute  CustomerEntity customer) {
 		model.addAttribute("customer",new CustomerEntity());
-		CustomerEntity customerFromDb=customerRepo.findById(customer.getUserName()).get();
-		if(customerFromDb.getPassword().equals(customer.getPassword())) {
-			return "";
+		if(customerService.getCustomerByUserName(customer.getUserName(),customer.getPassword()) != null
+				||customerService.getCustomerByEmail(customer.getUserName(),customer.getPassword()) != null){
+			return "SignedIn";
 		}else {
-			return "User Name Exists";
+			return "Wrong";
 		}
     	
 	}
