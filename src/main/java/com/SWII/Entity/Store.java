@@ -16,7 +16,10 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Store {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90701378de76dac987df6374b782d808f9bbbcb2
 	@Id 
 	private String storeId;
 
