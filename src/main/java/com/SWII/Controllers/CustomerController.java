@@ -8,15 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SWII.Entity.CustomerEntity;
+<<<<<<< HEAD
+import com.SWII.Repositories.CustomerRepository;
+import com.SWII.Services.CutomerServices;
+
+=======
 import com.SWII.Services.CutomerServices;
 
 
+>>>>>>> 90701378de76dac987df6374b782d808f9bbbcb2
 @Controller
 @RequestMapping(value="/customer")
 public class CustomerController {
 	
 	@Autowired 
 	CutomerServices customerService;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 90701378de76dac987df6374b782d808f9bbbcb2
 	
 	@RequestMapping(value="/Register", method=RequestMethod.GET)
 	public String registerForm(Model model) {

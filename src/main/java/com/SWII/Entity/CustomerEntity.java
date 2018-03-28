@@ -17,6 +17,10 @@ public class CustomerEntity {
 	
 	
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 90701378de76dac987df6374b782d808f9bbbcb2
 	public CustomerEntity(String userName, String email, String fristName, String secoundName, String password) {
 		super();
 		this.userName = userName;
