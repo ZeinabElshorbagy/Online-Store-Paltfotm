@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SWII.Entity.CustomerEntity;
+
 import com.SWII.Entity.Product;
+
 import com.SWII.Services.CutomerServices;
 
 
@@ -18,7 +20,7 @@ public class CustomerController {
 	
 	@Autowired 
 	CutomerServices customerService;
-	
+
 	@RequestMapping(value="/Register", method=RequestMethod.GET)
 	public String registerForm(Model model) {
 		model.addAttribute("customer",new CustomerEntity());
