@@ -13,9 +13,5 @@ public class OnlineStoreEntity  extends Store{
 	public OnlineStoreEntity() {
 		super();
 	}
-<<<<<<< HEAD
-=======
-	
 
->>>>>>> 90701378de76dac987df6374b782d808f9bbbcb2
 }
