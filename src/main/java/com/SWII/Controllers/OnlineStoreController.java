@@ -23,10 +23,7 @@ public class OnlineStoreController {
 	OnlineStoreRepo storeRepo; 
 	
 	@RequestMapping(value="/addstore",method=RequestMethod.POST)
-<<<<<<< HEAD
 
-=======
->>>>>>> 90701378de76dac987df6374b782d808f9bbbcb2
 	public boolean addStore(Model model ,@ModelAttribute OnlineStoreEntity store,HttpSession session) {
 		model.addAttribute("store", new OnlineStoreEntity());
 		if(storeRepo.existsById(store.getStoreId())) {
