@@ -30,6 +30,7 @@ public class OfflineStoreController {
 		if(storeRepo.existsById(store.getStoreId())) {
 			return false;
 		}else {
+
 			StoreOwnerEntity owner = (StoreOwnerEntity) session.getAttribute("owner");
 			store.setStatus(false);
 			store.setProducts(null);

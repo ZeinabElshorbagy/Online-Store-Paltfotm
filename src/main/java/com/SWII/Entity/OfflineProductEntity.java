@@ -12,7 +12,6 @@ public class OfflineProductEntity extends Product {
 
 	public OfflineProductEntity(String productId, String name, double lowPrice, double highPrice, String brand,
 			String category) {
-
 		super(productId, null, lowPrice, highPrice, brand, category);
 		// TODO Auto-generated constructor stub
 	}
