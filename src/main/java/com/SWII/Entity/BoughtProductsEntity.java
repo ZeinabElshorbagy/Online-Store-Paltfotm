@@ -70,7 +70,6 @@ public class BoughtProductsEntity extends StoreProductsEntity implements Seriali
 	}
 	public BoughtProductsEntity() {
 		super();
-		this.id = 0;
 		this.customers = null;
 		this.quantaty = 0;
 		this.deliveryDate = null;

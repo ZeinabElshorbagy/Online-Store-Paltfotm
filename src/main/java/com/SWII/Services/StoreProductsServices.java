@@ -10,7 +10,7 @@ import com.SWII.Entity.StoreProductsEntity;
 import com.SWII.Repositories.StoreProductsRepository;
 
 @Service
-public class StoreProductsService {
+public class StoreProductsServices {
 
 	@Autowired
 	StoreProductsRepository storeProductRepo;
