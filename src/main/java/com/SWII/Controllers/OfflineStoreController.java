@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.SWII.Entity.OfflineStoreEntity;
 import com.SWII.Entity.OnlineProductEntity;
 import com.SWII.Entity.StoreOwnerEntity;
-import com.SWII.Repositories.OfflineStoreRepo;
+import com.SWII.Services.OfflineStoreServices;
 
 
 
@@ -22,12 +22,12 @@ import com.SWII.Repositories.OfflineStoreRepo;
 @RequestMapping("/offlinestore")
 public class OfflineStoreController {
 	@Autowired
-	OfflineStoreRepo storeRepo; 
+	OfflineStoreServices offlineStoreService; 
 	
 	@RequestMapping(value="/addstore",method=RequestMethod.POST)
 	public boolean addStore(Model model ,@ModelAttribute OfflineStoreEntity store,HttpSession session) {
 		model.addAttribute("store", new OnlineProductEntity());
-		if(storeRepo.existsById(store.getStoreId())) {
+		if(offlineStoreService.findStore(store.getStoreId())) {
 			return false;
 		}else {
 
@@ -37,7 +37,7 @@ public class OfflineStoreController {
 			store.setNumberOfView(0);
 			store.setStoreId(store.getName());
 			store.setStoreOwner(owner);
-			storeRepo.save(store);
+			offlineStoreService.saveStore(store);
 			return true;
 		}
 	}
