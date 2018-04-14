@@ -6,15 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.SWII.Entity.CustomerEntity;
-
-import com.SWII.Entity.Product;
-
+import com.SWII.Entity.ProductEntity;
 import com.SWII.Services.CutomerServices;
 
 
-@Controller
+@RestController
 @RequestMapping(value="/customer")
 public class CustomerController {
 	
@@ -60,7 +59,7 @@ public class CustomerController {
 	}
     
     @RequestMapping(value="/home",  method=RequestMethod.GET)
-    public String showProducts(Model model , @ModelAttribute Product product) {
+    public String showProducts(Model model , @ModelAttribute ProductEntity product) {
     	return "Buy";
     }
     

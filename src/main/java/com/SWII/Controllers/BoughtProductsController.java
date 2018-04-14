@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.SWII.Entity.BoughtProductsEntity;
 import com.SWII.Entity.CustomerEntity;
-import com.SWII.Entity.Store;
+import com.SWII.Entity.StoreEntity;
 import com.SWII.Services.BoughtProductsServices;
 import com.SWII.Services.StoreServices;
 
@@ -32,13 +32,11 @@ public class BoughtProductsController {
 		System.out.println(storId+"--------"+productId);
 		BoughtProductsEntity boughtProduct = new BoughtProductsEntity();
 		CustomerEntity customer=null;//TODO mn el session
-		Store store = storeService.getStore(storId);
 		boughtProduct.setCustomers(customer);
 		boughtProduct.setDeliveryDate(deliveryDate);
 		boughtProduct.setNumberOfViews(0);
 		boughtProduct.setOrderDate(orderDate);
 		boughtProduct.setQuantaty(quantaty);
-		boughtProduct.setStores(store);
 		if(boughtProductsService.saveBoght(boughtProduct))
 			return true;
 		else
