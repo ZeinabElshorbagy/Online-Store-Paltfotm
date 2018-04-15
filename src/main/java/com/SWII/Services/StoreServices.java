@@ -16,7 +16,7 @@ public class StoreServices {
 	StoreOwnerServices ownerService;
 
 	public boolean saveStore(StoreEntity store) {
-		if (ownerService.exist(store.getStoreOwner())) {
+		if (ownerService.exist(store.getStoreOwner().getUserId())) {
 			storeService.save(store);
 			return true;
 		}

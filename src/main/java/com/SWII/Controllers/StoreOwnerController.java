@@ -29,7 +29,7 @@ public class StoreOwnerController {
 		StoreOwnerEntity owner = (StoreOwnerEntity) session.getAttribute("owner");
 		if (owner == null) {
 			model.addAttribute("storeOwner", new StoreOwnerEntity());
-			if (!storeOwnerRepo.existsById(storeOwner.getOwnerId())) {
+			if (!storeOwnerRepo.existsById(storeOwner.getUserId())) {
 				storeOwnerRepo.save(storeOwner);
 				session.setAttribute("owner", storeOwner);
 				return "StoreOwnerPanel";
@@ -59,7 +59,7 @@ public class StoreOwnerController {
 		StoreOwnerEntity owner = (StoreOwnerEntity) session.getAttribute("owner");
 		if (owner == null) {
 			model.addAttribute("storeOwner", new StoreOwnerEntity());
-			StoreOwnerEntity storeOwnerFormdb = storeOwnerRepo.findById(storeOwner.getOwnerId()).get();
+			StoreOwnerEntity storeOwnerFormdb = storeOwnerRepo.findById(storeOwner.getUserId()).get();
 			System.out.println(storeOwner.getPassword() + "----" + storeOwnerFormdb.getPassword());
 			if (storeOwnerFormdb.getPassword().equals(storeOwner.getPassword())) {
 				session.setAttribute("storeOwner",storeOwnerFormdb);

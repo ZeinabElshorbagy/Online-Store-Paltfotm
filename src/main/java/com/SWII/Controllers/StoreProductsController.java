@@ -37,6 +37,7 @@ public class StoreProductsController {
 	}
 	
 	
+	
 //	public List<StoreProductsEntity> getNumberOfViews(String storeId){
 //		List<StoreProductsEntity> views = new ArrayList<>();
 //		views = storeProductRepo.findBystores(storeId);

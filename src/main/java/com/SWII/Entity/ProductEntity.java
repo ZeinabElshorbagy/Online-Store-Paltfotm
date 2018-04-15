@@ -13,20 +13,44 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class ProductEntity {
 
-	private enum Type {online , offline}
+	public enum Type {online , offline}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int productId;
 
     @OneToMany(mappedBy = "stores", cascade = CascadeType.ALL, orphanRemoval = true)
-
     private Set<StoreProductsEntity> stores;
 
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<AddProductHistory> addHistory;
+    
+    
 
+	public ProductEntity(int productId, Set<StoreProductsEntity> stores, Set<AddProductHistory> addHistory, String name,
+			Double lowPrice, Double highPrice, String brand, String category, Type type) {
+		super();
+		this.productId = productId;
+		this.stores = stores;
+		this.addHistory = addHistory;
+		this.name = name;
+		this.lowPrice = lowPrice;
+		this.highPrice = highPrice;
+		this.brand = brand;
+		this.category = category;
+		this.type = type;
+	}
+
+	public Set<AddProductHistory> getAddHistory() {
+		return addHistory;
+	}
+
+	public void setAddHistory(Set<AddProductHistory> addHistory) {
+		this.addHistory = addHistory;
+	}
 	String name;
 	Double lowPrice;
 	Double highPrice;
@@ -47,6 +71,7 @@ public class ProductEntity {
 		this.type = type;
 	}
 	
+	
 	public ProductEntity() {
 		super();
 //		this.name = "";
@@ -55,6 +80,10 @@ public class ProductEntity {
 //		this.category = "";
 	}
 	
+	public ProductEntity(int productId) {
+		this.productId = productId;
+	}
+
 	public Type getType() {
 		return type;
 	}
