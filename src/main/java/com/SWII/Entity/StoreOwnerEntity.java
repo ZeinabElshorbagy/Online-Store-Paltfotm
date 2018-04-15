@@ -1,17 +1,21 @@
 package com.SWII.Entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
 public class StoreOwnerEntity {
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int ownerId;
+	
+	@Column(unique=true)
 	private String userName;
 	private String fristName;
 	private String secoundName;
@@ -19,16 +23,63 @@ public class StoreOwnerEntity {
 	private String address;
 	private String phoneNumber;
 
+	
+	/* @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "storeOwner")
+	 private Set<StoreEntity> storeEntities = new HashSet<>();*/
+
+	public StoreOwnerEntity(int ownerId, @UniqueElements String userName, String fristName, String secoundName,
+	String password, String address, String phoneNumber) {
+		
+super();
+this.ownerId = ownerId;
+this.userName = userName;
+this.fristName = fristName;
+this.secoundName = secoundName;
+this.password = password;
+this.address = address;
+this.phoneNumber = phoneNumber;
+}
+// 
+	
+//	public StoreOwnerEntity(int ownerId, @UniqueElements String userName, String fristName, String secoundName,
+//			String password, String address, String phoneNumber, Set<StoreEntity> storeEntities) {
+//		super();
+//		this.ownerId = ownerId;
+//		this.userName = userName;
+//		this.fristName = fristName;
+//		this.secoundName = secoundName;
+//		this.password = password;
+//		this.address = address;
+//		this.phoneNumber = phoneNumber;
+//		this.storeEntities = storeEntities;
+//	}
+
+	public StoreOwnerEntity() {
+		super();
+		this.userName = "";
+		this.fristName = "";
+		this.secoundName = "";
+		this.password = "";
+		this.address = "";
+		this.phoneNumber = "";
+	//	this.storeEntities = null;
+	}
+	
+	
+	public int getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public StoreOwnerEntity() {
-		super();
 	}
 
 	public String getFristName() {
@@ -71,27 +122,14 @@ public class StoreOwnerEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public StoreOwnerEntity(String userName, String fristName, String secoundName, String password, String address,
-			String phoneNumber) {
-		super();
-		this.userName = userName;
-		this.fristName = fristName;
-		this.secoundName = secoundName;
-		this.password = password;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-	}
+//	public Set<StoreEntity> getStoreEntities() {
+//		return storeEntities;
+//	}
+//
+//	public void setStoreEntities(Set<StoreEntity> storeEntities) {
+//		this.storeEntities = storeEntities;
+//	}
 
-	
-	 @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "storeOwner")
-	 private Set<Store> stores = new HashSet<>();
 
-	public Set<Store> getStores() {
-		return stores;
-	}
-
-	public void setStores(Set<Store> stores) {
-		this.stores = stores;
-	}
 
 }
