@@ -22,4 +22,13 @@ public class StoreServices {
 		}
 		return false;
 	}
+	
+	public StoreEntity getStoreByName(String name){
+		StoreEntity store= storeService.findByName(name);
+		if(store == null)
+			return null;
+		return store;
+	}
+	
+	
 }

@@ -44,6 +44,10 @@ public class AdminController {
 
 		return "AddBrand";
 	}
-
+	
+	@RequestMapping(value="/approveStore",method=RequestMethod.POST)
+	public void approveStore(String storeName) {
+		
+	}
 	
 }
