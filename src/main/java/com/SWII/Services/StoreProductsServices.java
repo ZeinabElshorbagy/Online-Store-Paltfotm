@@ -15,12 +15,16 @@ public class StoreProductsServices {
 	@Autowired
 	StoreProductsRepository storeProductRepo;
 	
+	@Autowired
+	StoreServices storeServices;
 
 	public List<StoreProductsEntity> getStoreProduct(StoreEntity storeId){
 		return storeProductRepo.findBystores(storeId);
 	}
 	
 	public boolean saveProduct(StoreProductsEntity entity) {
+		if(storeServices.getStoreByName(entity.getStores().getName()).getStatus() == false)
+			return false;
 		return storeProductRepo.save(entity) != null;
 	}
 	
