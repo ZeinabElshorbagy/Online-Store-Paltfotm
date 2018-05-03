@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -26,22 +27,30 @@ public class StoreEntity {
 	@OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<StoreProductsEntity> products;
 
+	@ManyToOne
+	private StoreOwnerEntity storeOwner;
+	
+	@OneToMany(mappedBy = "stores", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<StoreCollaboratorsEntity> stores;
+	
 	private Type type;
 	private Boolean status;
 	private String name;
 	private Integer numberOfView;
-	private Integer storeOwner;
- 
-	public StoreEntity(int storeId, Set<StoreProductsEntity> products, Type type, Boolean status, String name,
-			Integer storeOwner) {
+	
+	
+
+	public StoreEntity(int storeId, Set<StoreProductsEntity> products, StoreOwnerEntity storeOwner,
+			Set<StoreCollaboratorsEntity> collaborators, Type type, Boolean status, String name, Integer numberOfView) {
 		super();
 		this.storeId = storeId;
 		this.products = products;
+		this.storeOwner = storeOwner;
+		this.stores = collaborators;
 		this.type = type;
-		this.numberOfView = 0;
 		this.status = status;
 		this.name = name;
-		this.storeOwner = storeOwner;
+		this.numberOfView = numberOfView;
 	}
 
 	public StoreEntity(int storeId) {
@@ -52,6 +61,15 @@ public class StoreEntity {
 	public StoreEntity() {
 		super();
 		status = false;
+	}
+	
+
+	public Set<StoreCollaboratorsEntity> getCollaborators() {
+		return stores;
+	}
+
+	public void setCollaborators(Set<StoreCollaboratorsEntity> collaborators) {
+		this.stores = collaborators;
 	}
 
 	public int getStoreId() {
@@ -90,11 +108,11 @@ public class StoreEntity {
 		this.type = Type.valueOf(type);
 	}
 
-	public Integer getStoreOwner() {
+	public StoreOwnerEntity getStoreOwner() {
 		return storeOwner;
 	}
 
-	public void setStoreOwner(Integer storeOwner) {
+	public void setStoreOwner(StoreOwnerEntity storeOwner) {
 		this.storeOwner = storeOwner;
 	}
 
