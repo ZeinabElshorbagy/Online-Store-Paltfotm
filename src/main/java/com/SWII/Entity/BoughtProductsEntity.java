@@ -41,7 +41,7 @@ public class BoughtProductsEntity extends StoreProductsEntity implements Seriali
 	public void setCustomers(CustomerEntity customers) {
 		this.customers = customers;
 	}
-	public int getQuantaty() {
+	public Integer getQuantaty() {
 		return quantaty;
 	}
 	public void setQuantaty(int quantaty) {
@@ -59,9 +59,9 @@ public class BoughtProductsEntity extends StoreProductsEntity implements Seriali
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public BoughtProductsEntity(Store stores, Product products, Integer numberOfViews, int id, CustomerEntity customers,
+	public BoughtProductsEntity(StoreEntity stores, ProductEntity products, Integer numberOfViews, int id, CustomerEntity customers,
 			int quantaty, Date deliveryDate, Date orderDate) {
-		super(stores, products, numberOfViews);
+		super();
 		this.id = id;
 		this.customers = customers;
 		this.quantaty = quantaty;
