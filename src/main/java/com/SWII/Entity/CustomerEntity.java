@@ -4,19 +4,21 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
 
 @Entity
-public class CustomerEntity extends UserEntity{
-	
+public class CustomerEntity extends UserEntity {
+
 	private String fristName;
 	private String secoundName;
-	
+
 	@OneToMany(mappedBy = "customers", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<BoughtProductsEntity> customers;
 
-	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customer")
+	private CartEntity cart;
 
 	public CustomerEntity(String email, String password, String userName, String fristName, String secoundName,
 			Set<BoughtProductsEntity> customers) {
@@ -25,19 +27,16 @@ public class CustomerEntity extends UserEntity{
 		this.secoundName = secoundName;
 		this.customers = customers;
 	}
-	
+
 	public CustomerEntity() {
 		super();
 		this.fristName = "";
 		this.secoundName = "";
 	}
 
-
-
 	public CustomerEntity(String email, String password, String userName) {
 		super(email, password, userName);
 	}
-
 
 	public String getFristName() {
 		return fristName;
@@ -54,8 +53,6 @@ public class CustomerEntity extends UserEntity{
 	public void setSecoundName(String secoundName) {
 		this.secoundName = secoundName;
 	}
-
-
 
 	public Set<BoughtProductsEntity> getCustomers() {
 		return customers;
